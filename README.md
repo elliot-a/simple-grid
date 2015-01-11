@@ -1,4 +1,4 @@
-output-slab-demo
-================
+=======
+# simple-grid
+A simple grid output slab
 
-A demo output slab - In this case a pie chart built with high charts.

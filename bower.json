@@ -1,0 +1,26 @@
+{
+  "name": "simple-grid",
+  "version": "0.0.0",
+  "homepage": "https://github.com/elliot-a/simple-grid",
+  "authors": [
+    "Elliot Agro <elliot@slabs.io>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1"
+  },
+  "resolutions": {
+    "bootstrap": "~3.3.1"
+  },
+  "devDependencies": {
+    "eonasdan-bootstrap-datetimepicker": "~3.1.3"
+  }
+}

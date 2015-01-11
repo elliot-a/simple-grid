@@ -1,5 +1,5 @@
 {
-  "name" : "sample output slab",
+  "name" : "simple grid",
   "type" : "output",
   "connectionsIn" : 1,
   "connectionsOut" : 0

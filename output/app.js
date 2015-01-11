@@ -18,7 +18,7 @@ slabs.getData().then(function (obj) {
 
 
     // set the page title
-    window.document.title = "Sample Pie Chart";
+    window.document.title = "Sample Pie Chart 2";
 
     // get an array of all the series values for highcharts
     var chartSeriesArray = [];
@@ -38,7 +38,7 @@ slabs.getData().then(function (obj) {
             plotShadow: false
         },
         title: {
-            text: "Sample Pie Chart"
+            text: "Sample Pie Chart 2"
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

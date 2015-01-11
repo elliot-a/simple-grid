@@ -1,4 +1,3 @@
-=======
 # simple-grid
-A simple grid output slab
+>A simple grid output slab
 

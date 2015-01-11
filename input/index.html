@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/build/css/bootstrap-datetimepicker.min.css">
+    <style>
+        body{
+            padding:15px
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="page-header">
+        <h1>Pie Chart Outputer<br/><small>makes a little pie</small></h1>
+    </div>
+
+    <form role="form">
+
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input class="form-control" id="title" placeholder="Enter title text">
+        </div>
+
+        <div class="form-group">
+            <label for="catField">Category Field</label>
+            <select class="form-control" id="catField">
+                <option>name 1</option>
+                <option>name 2</option>
+                <option>name 3</option>
+                <option>name 4</option>
+                <option>name 5</option>
+            </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="metField">Metric Field</label>
+            <select class="form-control" id="metField">
+                <option>name 1</option>
+                <option>name 2</option>
+                <option>name 3</option>
+                <option>name 4</option>
+                <option>name 5</option>
+            </select>
+        </div>
+
+        <button id="submit" type="button" class="btn btn-default" onclick="compileObject()">Done</button>
+
+    </form>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/Eonasdan/bootstrap-datetimepicker/master/src/js/bootstrap-datetimepicker.js"></script>
+    <script src="dist/slabs.io.js"></script>
+    <script>
+
+        $('#fromDate').datetimepicker({
+            pickTime: false
+        });
+        $('#toDate').datetimepicker({
+            pickTime: false
+        });
+
+        $('#submit').click(function (){
+            slabs.send({name:"pie"});
+        });
+
+    </script>
+
+</body>
+</html>

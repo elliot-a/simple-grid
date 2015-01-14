@@ -2,9 +2,16 @@
 
 var testData = {
     values: ['Tories', 'Labour', 'Liberals', 'UKIP', 'Greens'],
+    categories: ['18/01/2015', '19/01/2015'],
     data: [
         {
-            'date': Date.now(),
+            'Tories' : 130,
+            'Labour': 131,
+            'Liberals': 80,
+            'UKIP': 100,
+            'Greens': 33
+        },
+        {
             'Tories' : 130,
             'Labour': 131,
             'Liberals': 80,
@@ -25,7 +32,7 @@ slabs.getData().then(function (obj) {
     var header = document.createElement('thead');
     var hr = document.createElement('tr');
     
-    _.forEach(['Date'].concat(data.values), function(val){
+    _.forEach([' '].concat(data.values), function(val){
         var head = document.createElement('th');
         head.innerText = val;
         hr.appendChild(head);
@@ -35,22 +42,37 @@ slabs.getData().then(function (obj) {
     grid.appendChild(header);
     
     var tb = document.createElement('tbody');
-    
-    _.forEach(data.data, function(o){
+
+    var index = 0;
+
+    _.forEach(data.categories, function(catName){
+
         var tr = document.createElement('tr');
+
         var td;
         var val;
-        for(var key in o){
-            val = o[key];
-            if(key === 'date'){
-                val = moment(o[key]).format('MMMM Do YYYY');
-            }
+
+        td = document.createElement('td');
+        td.innerText = catName;
+        tr.appendChild(td);
+
+        var dataObject = data.data[index];
+
+        for(var key in dataObject){
+            val = dataObject[key];
             td = document.createElement('td');
             td.innerText = val;
             tr.appendChild(td);
         }
+
+
         tb.appendChild(tr);
-    });
+
+        index++;
+
+    })
+
+
     
     grid.appendChild(tb);
 

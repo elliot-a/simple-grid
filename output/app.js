@@ -1,22 +1,24 @@
 /* global Highcharts:false, slabs:false, _:false, moment:false */
 
 var testData = {
-    values: ['Tories', 'Labour', 'Liberals', 'UKIP', 'Greens'],
-    categories: ['18/01/2015', '19/01/2015'],
+    values: ['mentions_17283728', 'mentions_17283729' ],
+    categories: ['18/01/2015', '19/01/2015', '20/01/2015'],
+    labels: {
+        'mentions_17283728':'"muslim" on the dailymail.co.uk',
+        'mentions_17283729':'"terror" on the dailymail.co.uk'
+    },
     data: [
         {
-            'Tories' : 130,
-            'Labour': 131,
-            'Liberals': 80,
-            'UKIP': 100,
-            'Greens': 33
+            'mentions_17283728' : 131,
+            'mentions_17283729' : 94,
         },
         {
-            'Tories' : 130,
-            'Labour': 131,
-            'Liberals': 80,
-            'UKIP': 100,
-            'Greens': 33
+            'mentions_17283728' : 130,
+            'mentions_17283729' : 35,
+        },
+        {
+            'mentions_17283728': 33,
+            'mentions_17283729' : 93,
         }
     ]
 };
@@ -34,7 +36,11 @@ slabs.getData().then(function (obj) {
     
     _.forEach([' '].concat(data.values), function(val){
         var head = document.createElement('th');
-        head.innerText = val;
+        if(data.labels[val]){
+            head.innerText = data.labels[val];
+        }else{
+            head.innerText = val;
+        }
         hr.appendChild(head);
     });
 
@@ -58,13 +64,19 @@ slabs.getData().then(function (obj) {
 
         var dataObject = data.data[index];
 
-        for(var key in dataObject){
-            val = dataObject[key];
+        _.forEach(data.values, function(valName){
+
+            if(dataObject[valName]){
+                val = dataObject[valName];
+            }else{
+                val = '';
+            }
+
             td = document.createElement('td');
             td.innerText = val;
             tr.appendChild(td);
-        }
 
+        });
 
         tb.appendChild(tr);
 

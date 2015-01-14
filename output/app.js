@@ -1,66 +1,57 @@
-/* global Highcharts:false, slabs:false */
+/* global Highcharts:false, slabs:false, _:false, moment:false */
+
+var testData = {
+    values: ['Tories', 'Labour', 'Liberals', 'UKIP', 'Greens'],
+    data: [
+        {
+            'date': Date.now(),
+            'Tories' : 130,
+            'Labour': 131,
+            'Liberals': 80,
+            'UKIP': 100,
+            'Greens': 33
+        }
+    ]
+};
+
 
 // display the chart
 slabs.getData().then(function (obj) {
     'use strict';
-
-    // this are the data sent back from the server.
-    var dateCreated = obj.created;
-    var settingsObj = obj.settings; // this is the object that is saved from the input page
-    var chartData = obj.data; // this is the slabs 'output' object
-
-    // slabs output object
-    var categories = chartData.categories;
-    var series = chartData.series;
-    var data = chartData.data;
-    var dateFrom = chartData.dateFrom;
-    var dateTo = chartData.dateTo;
-
-
-    // set the page title
-    window.document.title = "Sample Pie Chart 2";
-
-    // get an array of all the series values for highcharts
-    var chartSeriesArray = [];
-    _.each(chartData.data, function (item){
-
-        // this is just the way highcharts accepts data.
-        var datum = [item[categories[0]], Number(item[series[0]])];
-        chartSeriesArray.push(datum);
+    
+    var grid = document.getElementById('grid');
+    var data = obj || testData;
+    
+    var header = document.createElement('thead');
+    var hr = document.createElement('tr');
+    
+    _.forEach(['Date'].concat(data.values), function(val){
+        var head = document.createElement('th');
+        head.innerText = val;
+        hr.appendChild(head);
     });
 
-    console.log(chartSeriesArray);
-
-    $('#chart-container').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 1,//null,
-            plotShadow: false
-        },
-        title: {
-            text: "Sample Pie Chart 2"
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
+    header.appendChild(hr);
+    grid.appendChild(header);
+    
+    var tb = document.createElement('tbody');
+    
+    _.forEach(data.data, function(o){
+        var tr = document.createElement('tr');
+        var td;
+        var val;
+        for(var key in o){
+            val = o[key];
+            if(key === 'date'){
+                val = moment(o[key]).format('MMMM Do YYYY');
             }
-        },
-        series: [{
-            type: 'pie',
-            name: series[0],
-            data: chartSeriesArray
-        }]
+            td = document.createElement('td');
+            td.innerText = val;
+            tr.appendChild(td);
+        }
+        tb.appendChild(tr);
     });
+    
+    grid.appendChild(tb);
 
 });

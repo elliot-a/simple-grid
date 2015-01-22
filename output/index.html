@@ -31,10 +31,10 @@
            </tr>
        </thead>
         <tbody>
-        <tr ng-repeat="category in tableController.categories">
-            <th>{{category  | date:'medium'}}</th>
-            <td ng-repeat="item in tableController.values track by $index">
-                {{tableController.data[$index][item]}}
+        <tr ng-repeat="data in tableController.data">
+            <th>{{tableController.categories[$index]  | date:'medium'}}</th>
+            <td ng-repeat="(key, value) in data">
+                {{value}}
             </td>
         </tr>
         </tbody>

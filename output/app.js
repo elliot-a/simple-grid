@@ -1,4 +1,4 @@
-/* global Highcharts:false, slabs:false, _:false, moment:false, angular:false */
+/* global slabs:false, _:false, angular:false */
 
 var testData = {
     values: ['mentions_17283728', 'mentions_17283729' ],
@@ -58,77 +58,3 @@ angular.module('app').controller('TableController', ['$scope', function($scope){
 
 
 }]);
-
-/*
-// display the chart
-slabs.getData().then(function (obj) {
-
-    'use strict';
-
-    var data = obj || testData;
-
-
-
-
-    var grid = document.getElementById('grid');
-    var header = document.createElement('thead');
-    var hr = document.createElement('tr');
-    
-    _.forEach([' '].concat(data.values), function(val){
-        var head = document.createElement('th');
-        if(data.labels[val]){
-            head.innerText = data.labels[val];
-        }else{
-            head.innerText = val;
-        }
-        hr.appendChild(head);
-    });
-
-    header.appendChild(hr);
-    grid.appendChild(header);
-    
-    var tb = document.createElement('tbody');
-
-    var index = 0;
-
-    _.forEach(data.categories, function(catName){
-
-        var tr = document.createElement('tr');
-
-        var td;
-        var val;
-
-        td = document.createElement('td');
-        td.innerText = catName;
-        tr.appendChild(td);
-
-        var dataObject = data.data[index];
-
-        _.forEach(data.values, function(valName){
-
-            if(dataObject[valName]){
-                val = dataObject[valName];
-            }else{
-                val = '';
-            }
-
-            td = document.createElement('td');
-            td.innerText = val;
-            tr.appendChild(td);
-
-        });
-
-        tb.appendChild(tr);
-
-        index++;
-
-    })
-
-
-    
-    grid.appendChild(tb);
-
-
-
-});
- */

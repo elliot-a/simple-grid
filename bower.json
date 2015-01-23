@@ -17,8 +17,7 @@
   "dependencies": {
     "bootstrap": "~3.3.1",
     "slabs.io.js": "*",
-    "underscore": "*",
-    "moment": "~2.9.0"
+    "underscore": "*"
   },
   "resolutions": {
     "bootstrap": "~3.3.1"

@@ -9,8 +9,7 @@ var testData = {
     },
     data: [
         {
-            'mentions_17283728' : 131,
-            'mentions_17283729' : 94
+            'mentions_17283729' : 131
         },
         {
             'mentions_17283728' : 130,
